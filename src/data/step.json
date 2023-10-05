@@ -1,19 +1,19 @@
 {
   "steps": [
     {
-      "number": "1",
+      "number": 1,
       "name": "your info"
     },
     {
-      "number": "2",
+      "number": 2,
       "name": "select plan"
     },
     {
-      "number": "3",
+      "number": 3,
       "name": "add-ons"
     },
     {
-      "number": "4",
+      "number": 4,
       "name": "summary"
     }
   ]

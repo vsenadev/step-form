@@ -10,7 +10,39 @@
   color: $white
 
   &__steps
-    width: 100%
-    height: 100%
+    width: calc(100% - 15%)
+    height: calc(100% - 15%)
     display: flex
     flex-direction: column
+    gap: 5%
+    padding: 15% 0 0 15%
+
+    &_div
+      display: flex
+      align-items: center
+      width: 100%
+      gap: 8%
+
+      &_number
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 35px
+        height: 35px
+        border-width: 1px
+        border-style: solid
+        border-color: $white
+        border-radius: 100%
+        font-family: $bold
+
+        &_description
+
+          &_step
+            font-family: $regular
+
+          &_name
+            font-family: $bold
+
+        &_current
+          background-color: $light-blue
+          color: $marine-blue
