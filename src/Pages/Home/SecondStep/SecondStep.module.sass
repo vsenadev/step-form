@@ -1,6 +1,43 @@
+@import "../../../assets/styles/variables"
+
 .container
   flex-direction: column
   display: flex
   padding-left: 7%
   width: 70%
   height: 70%
+
+  &__cards
+    justify-content: space-between
+    width: 90%
+    height: 25%
+    display: flex
+
+    &_div
+      width: 21%
+      height: 100%
+      border-width: 1px
+      border-style: solid
+      border-radius: 8px
+      padding: 4%
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+
+      &_image
+        width: 35%
+
+    &_informations
+      display: flex
+      flex-direction: column
+      gap: 20%
+      height: 25%
+
+      &_title
+        font-family: $bold
+        font-size: 1.2rem
+        color: $marine-blue
+
+      &_price
+        font-family: $regular
+        color: $cool-gray

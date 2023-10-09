@@ -1,21 +1,21 @@
 {
   "plans": [
     {
-      "image": "https://svgshare.com/f/yJd",
+      "image": "https://i.ibb.co/WxQ8YyV/icon-arcade.webp",
       "name": "Arcade",
       "monthly": 9,
       "yearly": 90,
       "free": 2
     },
     {
-      "image": "../../../assets/images/icon-advanced.svg",
+      "image": "https://i.ibb.co/TrmKSTK/icon-advanced.webp",
       "name": "Advanced",
       "monthly": 12,
       "yearly": 120,
       "free": 2
     },
     {
-      "image": "../../../assets/images/icon-pro.svg",
+      "image": "https://i.ibb.co/W0z0HJm/icon-pro.webp",
       "name": "Pro",
       "monthly": 15,
       "yearly": 150,
