@@ -1,0 +1,25 @@
+{
+  "plans": [
+    {
+      "image": "https://svgshare.com/f/yJd",
+      "name": "Arcade",
+      "monthly": 9,
+      "yearly": 90,
+      "free": 2
+    },
+    {
+      "image": "../../../assets/images/icon-advanced.svg",
+      "name": "Advanced",
+      "monthly": 12,
+      "yearly": 120,
+      "free": 2
+    },
+    {
+      "image": "../../../assets/images/icon-pro.svg",
+      "name": "Pro",
+      "monthly": 15,
+      "yearly": 150,
+      "free": 2
+    }
+  ]
+}
