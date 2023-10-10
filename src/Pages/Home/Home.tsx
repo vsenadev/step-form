@@ -22,7 +22,9 @@ export default function Home(){
                     />
                     :
                     current === 2 ?
-                        <SecondStep />
+                        <SecondStep
+                            setCurrent={setCurrent}
+                        />
                         :
                         current === 3 ?
                             <ThirdStep />

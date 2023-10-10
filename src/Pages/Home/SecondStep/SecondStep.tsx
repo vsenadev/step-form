@@ -1,8 +1,59 @@
 import styles from './SecondStep.module.sass'
 import TitleAndDescription from "../../../Components/TitleAndDescription/TitleAndDescription";
 import data from '../../../data/plan.json'
+import Stack from '@mui/material/Stack';
+import {styled, Switch} from "@mui/material";
+import React, {useState} from "react";
 
-export default function SecondStep(){
+interface SecondStepInterface {
+    setCurrent: React.Dispatch<React.SetStateAction<number>>
+}
+
+const AntSwitch = styled(Switch)(({ theme }) => ({
+    width: 28,
+    height: 16,
+    padding: 0,
+    display: 'flex',
+    '&:active': {
+        '& .MuiSwitch-thumb': {
+            width: 15,
+        },
+        '& .MuiSwitch-switchBase.Mui-checked': {
+            transform: 'translateX(9px)',
+        },
+    },
+    '& .MuiSwitch-switchBase': {
+        padding: 2,
+        '&.Mui-checked': {
+            transform: 'translateX(12px)',
+            color: '#fff',
+            '& + .MuiSwitch-track': {
+                opacity: 1,
+                backgroundColor: theme.palette.mode === 'dark' ? 'hsl(213, 96%, 18%)' : 'hsl(213, 96%, 18%)',
+            },
+        },
+    },
+    '& .MuiSwitch-thumb': {
+        boxShadow: '0 2px 4px 0 rgb(0 35 11 / 20%)',
+        width: 12,
+        height: 12,
+        borderRadius: 6,
+        transition: theme.transitions.create(['width'], {
+            duration: 200,
+        }),
+    },
+    '& .MuiSwitch-track': {
+        borderRadius: 16 / 2,
+        opacity: 1,
+        backgroundColor: theme.palette.mode === 'dark' ? 'hsl(213, 96%, 18%)' : 'hsl(213, 96%, 18%)',
+        boxSizing: 'border-box',
+    },
+}));
+
+
+export default function SecondStep(props: SecondStepInterface){
+    const [type, setType] = useState(false)
+
     return(
         <section className={styles.container}>
             <TitleAndDescription
@@ -13,7 +64,7 @@ export default function SecondStep(){
                 {
                     data.plans.map((element) => {
                         return(
-                            <div className={styles.container__cards_div}>
+                            <div className={styles.container__cards_div} key={element.name}>
                                 <img src={element.image} alt="icon" className={styles.container__cards_div_image}/>
                                 <div className={styles.container__cards_informations}>
                                     <h3 className={styles.container__cards_informations_title}>{element.name}</h3>
@@ -24,7 +75,22 @@ export default function SecondStep(){
                     })
                 }
             </div>
+            <div className={styles.container__toggle}>
+                <Stack direction="row" spacing={3} alignItems="center">
+                    <span className={type ? styles.container__toggle_name : styles.container__toggle_opacity}>Monthly</span>
+                    <AntSwitch defaultChecked
+                               onClick={() => setType(!type)}
+                               inputProps={{ 'aria-label': 'ant design' }} />
+                    <span className={!type ? styles.container__toggle_name : styles.container__toggle_opacity}>Yearly</span>
+                </Stack>
+            </div>
+            <div className={styles.container__buttons}>
+                <div className={styles.container__buttons_div}>
+                    <span className={styles.container__buttons_div_back} onClick={() => props.setCurrent(1)}>Go Back</span>
+                    <button className={styles.container__buttons_div_next} onClick={() => props.setCurrent(3)}>Next Step</button>
+                </div>
 
+            </div>
         </section>
     )
 }

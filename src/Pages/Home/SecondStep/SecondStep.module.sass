@@ -10,22 +10,23 @@
   &__cards
     justify-content: space-between
     width: 90%
-    height: 25%
+    height: 35%
     display: flex
 
     &_div
-      width: 21%
-      height: 100%
+      width: 25%
+      height: 60%
       border-width: 1px
       border-style: solid
       border-radius: 8px
-      padding: 4%
+      padding: 4% 0 6% 4%
       display: flex
       flex-direction: column
       justify-content: space-between
+      border-color: $light-gray
 
       &_image
-        width: 35%
+        width: 30%
 
     &_informations
       display: flex
@@ -41,3 +42,51 @@
       &_price
         font-family: $regular
         color: $cool-gray
+
+  &__toggle
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: $magnolia
+    width: 90%
+    height: 8%
+    border-radius: 8px
+
+    &_name
+      font-family: $medium
+      color: $marine-blue
+
+    &_opacity
+      font-family: $medium
+      color: $cool-gray
+
+  &__buttons
+    width: 90%
+    height: 35%
+    display: flex
+    align-items: flex-end
+    justify-content: space-between
+
+    &_div
+      display: flex
+      align-items: flex-end
+      justify-content: space-between
+      width: 100%
+      height: 100%
+
+      &_back
+        color: $marine-blue
+        font-family: $medium
+        cursor: pointer
+        font-size: 1.2rem
+
+      &_next
+        color: $white
+        border-style: none
+        border-radius: 8px
+        background-color: $marine-blue
+        width: 20%
+        height: 20%
+        font-size: 1rem
+        cursor: pointer
+        font-family: $medium
