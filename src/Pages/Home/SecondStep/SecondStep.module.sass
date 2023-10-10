@@ -19,14 +19,25 @@
       border-width: 1px
       border-style: solid
       border-radius: 8px
-      padding: 4% 0 6% 4%
+      padding: 4% 0 6% 3%
       display: flex
       flex-direction: column
       justify-content: space-between
-      border-color: $light-gray
+      border-color: $magnolia
 
       &_image
         width: 30%
+        border-radius: 100%
+
+    &_selected
+      background-color: $alabaster
+      border-color: $cool-gray
+
+
+    &_div:hover
+      cursor: pointer
+      border-color: $cool-gray
+
 
     &_informations
       display: flex
@@ -42,6 +53,9 @@
       &_price
         font-family: $regular
         color: $cool-gray
+
+      &_free
+        font-family: $medium
 
   &__toggle
     display: flex

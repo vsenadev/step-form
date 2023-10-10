@@ -3,10 +3,14 @@ import TitleAndDescription from "../../../Components/TitleAndDescription/TitleAn
 import data from '../../../data/plan.json'
 import Stack from '@mui/material/Stack';
 import {styled, Switch} from "@mui/material";
-import React, {useState} from "react";
+import React from "react";
 
 interface SecondStepInterface {
     setCurrent: React.Dispatch<React.SetStateAction<number>>
+    type: boolean
+    setType: React.Dispatch<React.SetStateAction<boolean>>
+    plan: string
+    setPlan: React.Dispatch<React.SetStateAction<string>>
 }
 
 const AntSwitch = styled(Switch)(({ theme }) => ({
@@ -52,7 +56,6 @@ const AntSwitch = styled(Switch)(({ theme }) => ({
 
 
 export default function SecondStep(props: SecondStepInterface){
-    const [type, setType] = useState(false)
 
     return(
         <section className={styles.container}>
@@ -64,11 +67,12 @@ export default function SecondStep(props: SecondStepInterface){
                 {
                     data.plans.map((element) => {
                         return(
-                            <div className={styles.container__cards_div} key={element.name}>
+                            <div className={props.plan === element.name ? `${styles.container__cards_div} ${styles.container__cards_selected}` : styles.container__cards_div} onClick={() => props.setPlan(element.name)} key={element.name}>
                                 <img src={element.image} alt="icon" className={styles.container__cards_div_image}/>
                                 <div className={styles.container__cards_informations}>
                                     <h3 className={styles.container__cards_informations_title}>{element.name}</h3>
-                                    <span className={styles.container__cards_informations_price}>${element.monthly}/mo</span>
+                                    <span className={styles.container__cards_informations_price}>{props.type ? `${element.monthly}/mo` : `${element.yearly}/yr`}</span>
+                                    <span className={styles.container__cards_informations_free}>{ props.type ? '': `${element.free} months free`}</span>
                                 </div>
                             </div>
                             )
@@ -77,11 +81,11 @@ export default function SecondStep(props: SecondStepInterface){
             </div>
             <div className={styles.container__toggle}>
                 <Stack direction="row" spacing={3} alignItems="center">
-                    <span className={type ? styles.container__toggle_name : styles.container__toggle_opacity}>Monthly</span>
+                    <span className={props.type ? styles.container__toggle_name : styles.container__toggle_opacity}>Monthly</span>
                     <AntSwitch defaultChecked
-                               onClick={() => setType(!type)}
-                               inputProps={{ 'aria-label': 'ant design' }} />
-                    <span className={!type ? styles.container__toggle_name : styles.container__toggle_opacity}>Yearly</span>
+                               onClick={() => props.setType(!props.type)}
+                               inputProps={{ 'aria-label': 'ant design' }}/>
+                    <span className={!props.type ? styles.container__toggle_name : styles.container__toggle_opacity}>Yearly</span>
                 </Stack>
             </div>
             <div className={styles.container__buttons}>
@@ -89,7 +93,6 @@ export default function SecondStep(props: SecondStepInterface){
                     <span className={styles.container__buttons_div_back} onClick={() => props.setCurrent(1)}>Go Back</span>
                     <button className={styles.container__buttons_div_next} onClick={() => props.setCurrent(3)}>Next Step</button>
                 </div>
-
             </div>
         </section>
     )

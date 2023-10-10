@@ -1,24 +1,27 @@
 import styles from './FirstStep.module.sass'
-import React, {useState} from "react";
+import React from "react";
 import TitleAndDescription from "../../../Components/TitleAndDescription/TitleAndDescription";
 
 interface FirstStepInterface {
     setCurrent: React.Dispatch<React.SetStateAction<number>>
+    name: string
+    setName: React.Dispatch<React.SetStateAction<string>>
+    mail: string
+    setMail: React.Dispatch<React.SetStateAction<string>>
+    phoneNumber: string
+    setPhoneNumber: React.Dispatch<React.SetStateAction<string>>
+    mouseHover: boolean
+    setMouseHover: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default function FirtsStep(props: FirstStepInterface){
 
-    const [mouseHover, setMouseHover] = useState(false)
-    const [name, setName] = useState('')
-    const [mail, setMail] = useState('')
-    const [phoneNumber, setPhoneNumber] = useState('')
-
     function changeMouseEvent(){
-        mouseHover ? setMouseHover(false) : setMouseHover(true)
+        props.mouseHover ? props.setMouseHover(false) : props.setMouseHover(true)
     }
 
     function nextStep(){
-        if(name !== '' && mail !== '' && phoneNumber !== ''){
+        if(props.name !== '' && props.mail !== '' && props.phoneNumber !== ''){
             props.setCurrent(2)
         }
     }
@@ -34,7 +37,7 @@ export default function FirtsStep(props: FirstStepInterface){
                     <div className={styles.container__form_div_active}>
                         <label className={styles.container__form_div_active_label}>Name</label>
                         {
-                            mouseHover && name === '' ?
+                            props.mouseHover && props.name === '' ?
                                 <span className={styles.container__form_div_active_error}>This field is required</span>
                                 :
                                 ''
@@ -44,15 +47,15 @@ export default function FirtsStep(props: FirstStepInterface){
                         type="text"
                         className={styles.container__form_div_input}
                         placeholder="e.g. Stephen King"
-                        value={name}
-                        onChange={(event) => setName(event.target.value)}
+                        value={props.name}
+                        onChange={(event) => props.setName(event.target.value)}
                     />
                 </div>
                 <div className={styles.container__form_div}>
                     <div className={styles.container__form_div_active}>
                         <label className={styles.container__form_div_active_label}>Email Address</label>
                         {
-                            mouseHover && mail === '' ?
+                            props.mouseHover && props.mail === '' ?
                                 <span className={styles.container__form_div_active_error}>This field is required</span>
                                 :
                                 ''
@@ -62,15 +65,15 @@ export default function FirtsStep(props: FirstStepInterface){
                         type="text"
                         className={styles.container__form_div_input}
                         placeholder="e.g. stephenking@lorem.com"
-                        value={mail}
-                        onChange={(event) => setMail(event.target.value)}
+                        value={props.mail}
+                        onChange={(event) => props.setMail(event.target.value)}
                     />
                 </div>
                 <div className={styles.container__form_div}>
                     <div className={styles.container__form_div_active}>
                         <label className={styles.container__form_div_active_label}>Phone Number</label>
                         {
-                            mouseHover && phoneNumber === '' ?
+                            props.mouseHover && props.phoneNumber === '' ?
                                 <span className={styles.container__form_div_active_error}>This field is required</span>
                                 :
                                 ''
@@ -79,8 +82,8 @@ export default function FirtsStep(props: FirstStepInterface){
                         type="text"
                         className={styles.container__form_div_input}
                         placeholder="e.g. +1 234 567 890"
-                        value={phoneNumber}
-                        onChange={(event) => setPhoneNumber(event.target.value)}
+                        value={props.phoneNumber}
+                        onChange={(event) => props.setPhoneNumber(event.target.value)}
                     />
                 </div>
             </div>

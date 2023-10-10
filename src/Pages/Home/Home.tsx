@@ -9,6 +9,12 @@ import FourthStep from "./FourthStep/FourthStep";
 export default function Home(){
 
     const [current, setCurrent] = useState(1);
+    const [mouseHover, setMouseHover] = useState(false)
+    const [name, setName] = useState('')
+    const [mail, setMail] = useState('')
+    const [phoneNumber, setPhoneNumber] = useState('')
+    const [type, setType] = useState(false)
+    const [plan, setPlan] = useState('Arcade')
 
     return(
         <main className={styles.container}>
@@ -19,11 +25,23 @@ export default function Home(){
                 current === 1 ?
                     <FirtsStep
                         setCurrent={setCurrent}
+                        mail={mail}
+                        mouseHover={mouseHover}
+                        name={name}
+                        phoneNumber={phoneNumber}
+                        setMail={setMail}
+                        setMouseHover={setMouseHover}
+                        setName={setName}
+                        setPhoneNumber={setPhoneNumber}
                     />
                     :
                     current === 2 ?
                         <SecondStep
                             setCurrent={setCurrent}
+                            setType={setType}
+                            type={type}
+                            plan={plan}
+                            setPlan={setPlan}
                         />
                         :
                         current === 3 ?
