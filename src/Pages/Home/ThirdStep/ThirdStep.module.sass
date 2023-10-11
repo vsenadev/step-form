@@ -1,0 +1,83 @@
+@import "../../../assets/styles/variables"
+
+.container
+  flex-direction: column
+  display: flex
+  padding-left: 7%
+  width: 70%
+  height: 70%
+
+  &__options
+    display: flex
+    flex-direction: column
+    width: 90%
+    height: 60%
+    gap: 5%
+
+    &_card
+      display: flex
+      width: 100%
+      padding: 1% 0 0 3%
+      height: 23%
+      align-items: center
+      border-color: $light-gray
+      border-style: solid
+      border-width: 1px
+      border-radius: 8px
+
+      &_input
+        width: 3%
+        height: 100%
+
+      &_div
+        display: flex
+        flex-direction: column
+        height: 100%
+        width: 81%
+        justify-content: center
+        gap: 8%
+        margin-left: 3%
+
+        &_name
+          font-family: $medium
+          font-size: 1.2rem
+          color: $marine-blue
+
+        &_description
+          font-family: $regular
+          color: $light-gray
+
+      &_price
+        font-family: $medium
+        color: $purplish-blue
+
+  &__buttons
+    width: 90%
+    height: 35%
+    display: flex
+    align-items: flex-end
+    justify-content: space-between
+
+    &_div
+      display: flex
+      align-items: flex-end
+      justify-content: space-between
+      width: 100%
+      height: 100%
+
+      &_back
+        color: $marine-blue
+        font-family: $medium
+        cursor: pointer
+        font-size: 1.2rem
+
+      &_next
+        color: $white
+        border-style: none
+        border-radius: 8px
+        background-color: $marine-blue
+        width: 20%
+        height: 20%
+        font-size: 1rem
+        cursor: pointer
+        font-family: $medium
