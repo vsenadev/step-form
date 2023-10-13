@@ -5,29 +5,34 @@
   display: flex
   padding-left: 7%
   width: 70%
-  height: 70%
+  height: 75%
 
   &__options
     display: flex
     flex-direction: column
     width: 90%
-    height: 60%
+    height: 40%
     gap: 5%
 
     &_card
       display: flex
       width: 100%
       padding: 1% 0 0 3%
-      height: 23%
+      height: 30%
       align-items: center
       border-color: $light-gray
       border-style: solid
       border-width: 1px
       border-radius: 8px
 
+      &_selected
+        border-color: $cool-gray
+        background-color: $alabaster
+
       &_input
         width: 3%
-        height: 100%
+        height: 40%
+        cursor: pointer
 
       &_div
         display: flex
@@ -47,9 +52,9 @@
           font-family: $regular
           color: $light-gray
 
-      &_price
-        font-family: $medium
-        color: $purplish-blue
+        &_price
+          font-family: $medium
+          color: $purplish-blue
 
   &__buttons
     width: 90%
