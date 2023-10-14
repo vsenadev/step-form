@@ -3,7 +3,7 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 import {useState} from "react";
 import FirtsStep from "./FirstStep/FirstStep";
 import SecondStep from "./SecondStep/SecondStep";
-import ThirdStep from "./ThirdStep/ThirdStep";
+import ThirdStep, {AddonsInterface} from "./ThirdStep/ThirdStep";
 import FourthStep from "./FourthStep/FourthStep";
 
 export default function Home(){
@@ -15,6 +15,7 @@ export default function Home(){
     const [phoneNumber, setPhoneNumber] = useState('')
     const [type, setType] = useState(false)
     const [plan, setPlan] = useState('Arcade')
+    const [addons, setAddons] = useState<AddonsInterface[]>([]);
 
     return(
         <main className={styles.container}>
@@ -45,9 +46,19 @@ export default function Home(){
                         />
                         :
                         current === 3 ?
-                            <ThirdStep />
+                            <ThirdStep
+                                addons={addons}
+                                setAddons={setAddons}
+                                setCurrent={setCurrent}
+                                type={type}
+                            />
                             :
-                            <FourthStep/>
+                            <FourthStep
+                             addons={addons}
+                             plan={plan}
+                             setCurrent={setCurrent}
+                             type={type}
+                            />
             }
         </main>
     )

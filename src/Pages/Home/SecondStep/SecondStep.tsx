@@ -82,10 +82,10 @@ export default function SecondStep(props: SecondStepInterface){
             <div className={styles.container__toggle}>
                 <Stack direction="row" spacing={3} alignItems="center">
                     <span className={props.type ? styles.container__toggle_name : styles.container__toggle_opacity}>Monthly</span>
-                    <AntSwitch defaultChecked
+                    <AntSwitch checked={!props.type}
                                onClick={() => props.setType(!props.type)}
                                inputProps={{ 'aria-label': 'ant design' }}/>
-                    <span className={!props.type ? styles.container__toggle_name : styles.container__toggle_opacity}>Yearly</span>
+                    <span className={props.type ? styles.container__toggle_name : styles.container__toggle_opacity}>Yearly</span>
                 </Stack>
             </div>
             <div className={styles.container__buttons}>

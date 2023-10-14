@@ -5,13 +5,13 @@
   display: flex
   padding-left: 7%
   width: 70%
-  height: 75%
+  height: 70%
 
   &__options
     display: flex
     flex-direction: column
     width: 90%
-    height: 40%
+    height: 50%
     gap: 5%
 
     &_card
@@ -36,6 +36,7 @@
 
       &_div
         display: flex
+
         flex-direction: column
         height: 100%
         width: 81%
@@ -56,8 +57,11 @@
           font-family: $medium
           color: $purplish-blue
 
+    &_card:hover
+      border-color: $cool-gray
+
   &__buttons
-    width: 90%
+    width: 93%
     height: 35%
     display: flex
     align-items: flex-end

@@ -3,17 +3,24 @@ import TitleAndDescription from "../../../Components/TitleAndDescription/TitleAn
 import data from '../../../data/addons.json';
 import React, { useEffect, useState } from "react";
 
-interface AddonsInterface {
-    "id": number,
-    "name": string,
-    "selected": boolean,
-    "description": string,
-    "monthly": number,
+export interface AddonsInterface {
+    "id": number
+    "name": string
+    "selected": boolean
+    "description": string
+    "monthly": number
     "yearly": number
 }
 
-export default function ThirdStep() {
-    const [addons, setAddons] = useState<AddonsInterface[]>([]); // Inicialize addons como um array vazio
+interface ThirdStepInterface {
+    addons: AddonsInterface[]
+    setAddons: React.Dispatch<React.SetStateAction<AddonsInterface[]>>
+    setCurrent: React.Dispatch<React.SetStateAction<number>>
+    type: boolean
+}
+
+export default function ThirdStep(props: ThirdStepInterface) {
+
 
     function generateAddonsList() {
         const addonsObject: AddonsInterface[] = data.addons.map((element, index) => ({
@@ -25,11 +32,11 @@ export default function ThirdStep() {
             yearly: element.yearly
         }));
 
-        setAddons(addonsObject);
+        props.setAddons(addonsObject);
     }
 
     const toggleSelection = (itemId: number) => {
-        setAddons((prevItems) =>
+        props.setAddons((prevItems) =>
             prevItems.map((item) =>
                 item.id === itemId ? { ...item, selected: !item.selected } : item
             )
@@ -39,7 +46,7 @@ export default function ThirdStep() {
     useEffect(() => {
         generateAddonsList();
     }, []);
-    console.log(addons)
+
     return (
         <section className={styles.container}>
             <TitleAndDescription
@@ -47,7 +54,7 @@ export default function ThirdStep() {
                 description="Add-ons help enhance your gaming experience."
             />
             <div className={styles.container__options}>
-                {addons.map((element) => {
+                {props.addons.map((element) => {
                     return (
                         <div key={element.name} className={element.selected ? `${styles.container__options_card_selected} ${styles.container__options_card}` : styles.container__options_card}>
                             <input
@@ -62,15 +69,15 @@ export default function ThirdStep() {
                                     {element.description}
                                 </p>
                             </div>
-                            <span className={styles.container__options_card_div_price}>+${element.yearly}/yr</span>
+                            <span className={styles.container__options_card_div_price}>{!props.type ? `+${element.yearly}/yr`:`+${element.monthly}/mo`} </span>
                         </div>
                     );
                 })}
             </div>
             <div className={styles.container__buttons}>
                 <div className={styles.container__buttons_div}>
-                    <span className={styles.container__buttons_div_back}>Go Back</span>
-                    <button className={styles.container__buttons_div_next}>Next Step</button>
+                    <span className={styles.container__buttons_div_back} onClick={() => props.setCurrent(2)}>Go Back</span>
+                    <button className={styles.container__buttons_div_next} onClick={() => props.setCurrent(4)}>Next Step</button>
                 </div>
             </div>
         </section>
