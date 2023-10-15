@@ -1,6 +1,6 @@
 import TitleAndDescription from "../../../Components/TitleAndDescription/TitleAndDescription";
 import styles from "./FourthStep.module.sass"
-import React from "react";
+import React, {useEffect} from "react";
 import {AddonsInterface} from "../ThirdStep/ThirdStep";
 import plans from "../../../data/plan.json"
 
@@ -12,6 +12,33 @@ interface FourthStepInterface {
 }
 
 export default function FourthStep(props: FourthStepInterface){
+
+    const selectedPlan = plans.plans.find(planObj => planObj.name === props.plan);
+    let total = 0
+
+    function calculateTotal() {
+       if(props.type && selectedPlan !== undefined){
+           total += selectedPlan.monthly
+           props.addons.forEach((element) => {
+               if(element.selected){
+                   total += element.monthly
+               }
+           })
+
+       }else if(!props.type && selectedPlan !== undefined){
+           total += selectedPlan.yearly
+           props.addons.forEach((element) => {
+               if(element.selected){
+                   total += element.yearly
+               }
+           })
+       }
+    }
+    console.log(selectedPlan?.monthly)
+    useEffect(() => {
+        calculateTotal()
+    }, [selectedPlan])
+    console.log(total)
     return(
         <section>
             <TitleAndDescription
@@ -22,19 +49,29 @@ export default function FourthStep(props: FourthStepInterface){
                 <div>
                     <div>
                         <span>{props.plan}{props.type ? "(Monthly)" : "(Yearly)"}</span>
-                        <span></span>
+                        <span>{props.type ? selectedPlan?.monthly : selectedPlan?.yearly}</span>
                     </div>
-                    <span></span>
+                    <span>Change</span>
                 </div>
                 <div>
-                    <div>
+                        {
+                            props.addons.map((element) => {
+                                if(element.selected){
+                                    return(
+                                        <div key={element.name}>
+                                            <span>{element.name}</span>
+                                            <span>{props.type ? element.monthly : element.yearly}</span>
+                                        </div>
+                                    )
+                                }
 
-                    </div>
+                            })
+                        }
                 </div>
             </div>
             <div>
-                <span></span>
-                <span></span>
+                <span>Total {props.type ? "(per month)" : "(per year)"}</span>
+                <span>{total}</span>
             </div>
             <div className={styles.container__buttons}>
                 <div className={styles.container__buttons_div}>
