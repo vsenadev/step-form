@@ -1,6 +1,6 @@
 import TitleAndDescription from "../../../Components/TitleAndDescription/TitleAndDescription";
 import styles from "./FourthStep.module.sass"
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {AddonsInterface} from "../ThirdStep/ThirdStep";
 import plans from "../../../data/plan.json"
 
@@ -14,53 +14,57 @@ interface FourthStepInterface {
 export default function FourthStep(props: FourthStepInterface){
 
     const selectedPlan = plans.plans.find(planObj => planObj.name === props.plan);
-    let total = 0
+    const [total, setTotal] = useState(0);
 
-    function calculateTotal() {
-       if(props.type && selectedPlan !== undefined){
-           total += selectedPlan.monthly
-           props.addons.forEach((element) => {
-               if(element.selected){
-                   total += element.monthly
-               }
-           })
-
-       }else if(!props.type && selectedPlan !== undefined){
-           total += selectedPlan.yearly
-           props.addons.forEach((element) => {
-               if(element.selected){
-                   total += element.yearly
-               }
-           })
-       }
-    }
-    console.log(selectedPlan?.monthly)
     useEffect(() => {
-        calculateTotal()
-    }, [selectedPlan])
-    console.log(total)
+        function calculateTotal() {
+            let newTotal = 0;
+
+            if (props.type && selectedPlan !== undefined) {
+                newTotal += selectedPlan.monthly;
+                props.addons.forEach((element) => {
+                    if (element.selected) {
+                        newTotal += element.monthly;
+                    }
+                });
+            } else if (!props.type && selectedPlan !== undefined) {
+                newTotal += selectedPlan.yearly;
+                props.addons.forEach((element) => {
+                    if (element.selected) {
+                        newTotal += element.yearly;
+                    }
+                });
+            }
+
+            setTotal(newTotal);
+        }
+
+        calculateTotal();
+    }, [props.type, selectedPlan, props.addons]);
+
     return(
-        <section>
+        <section className={styles.container}>
             <TitleAndDescription
                 title="Finishing up"
                 description="Double-check everything looks OK before confirming"
             />
-            <div>
-                <div>
-                    <div>
-                        <span>{props.plan}{props.type ? "(Monthly)" : "(Yearly)"}</span>
-                        <span>{props.type ? selectedPlan?.monthly : selectedPlan?.yearly}</span>
+            <div className={styles.container__box}>
+                <div className={styles.container__box_plan}>
+                    <div className={styles.container__box_plan_desc}>
+                        <span className={styles.container__box_plan_desc_span}>{props.plan} {props.type ? "(Monthly)" : "(Yearly)"}</span>
+                        <span onClick={() => props.setCurrent(2)} className={styles.container__box_plan_desc_change}>Change</span>
                     </div>
-                    <span>Change</span>
+                    <span className={styles.container__box_plan_price}>${props.type ? selectedPlan?.monthly : selectedPlan?.yearly}{props.type ? "/mo" : "/yr"}</span>
                 </div>
-                <div>
+                <hr/>
+                <div className={styles.container__box_addons}>
                         {
                             props.addons.map((element) => {
                                 if(element.selected){
                                     return(
-                                        <div key={element.name}>
-                                            <span>{element.name}</span>
-                                            <span>{props.type ? element.monthly : element.yearly}</span>
+                                        <div key={element.name} className={styles.container__box_addons_div}>
+                                            <span className={styles.container__box_addons_div_desc}>{element.name}</span>
+                                            <span className={styles.container__box_addons_div_price}>+${props.type ? element.monthly : element.yearly}{props.type ? "/mo" : "/yr"}</span>
                                         </div>
                                     )
                                 }
@@ -69,14 +73,14 @@ export default function FourthStep(props: FourthStepInterface){
                         }
                 </div>
             </div>
-            <div>
+            <div className={styles.container__total}>
                 <span>Total {props.type ? "(per month)" : "(per year)"}</span>
-                <span>{total}</span>
+                <span className={styles.container__total_price}>${total}{props.type ? "/mo" : "/yr"}</span>
             </div>
             <div className={styles.container__buttons}>
                 <div className={styles.container__buttons_div}>
-                    <span className={styles.container__buttons_div_back}>Go Back</span>
-                    <button className={styles.container__buttons_div_next}>Next Step</button>
+                    <span className={styles.container__buttons_div_back} onClick={() => props.setCurrent(3)}>Go Back</span>
+                    <button className={styles.container__buttons_div_next} onClick={() => props.setCurrent(5)}>Confirm</button>
                 </div>
             </div>
         </section>

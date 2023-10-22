@@ -48,8 +48,8 @@ export default function Home(){
                         current === 3 ?
                             <ThirdStep
                                 addons={addons}
-                                setAddons={setAddons}
-                                setCurrent={setCurrent}
+                                setAddons={setAddons}                                setCurrent={setCurrent}
+
                                 type={type}
                             />
                             :
