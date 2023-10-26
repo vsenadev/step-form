@@ -5,6 +5,7 @@ import FirtsStep from "./FirstStep/FirstStep";
 import SecondStep from "./SecondStep/SecondStep";
 import ThirdStep, {AddonsInterface} from "./ThirdStep/ThirdStep";
 import FourthStep from "./FourthStep/FourthStep";
+import FinalStep from "./FinalStep/FinalStep";
 
 export default function Home(){
 
@@ -48,17 +49,23 @@ export default function Home(){
                         current === 3 ?
                             <ThirdStep
                                 addons={addons}
-                                setAddons={setAddons}                                setCurrent={setCurrent}
-
+                                setAddons={setAddons}
+                                setCurrent={setCurrent}
                                 type={type}
                             />
                             :
-                            <FourthStep
-                             addons={addons}
-                             plan={plan}
-                             setCurrent={setCurrent}
-                             type={type}
-                            />
+                            current === 4 ?
+                                <FourthStep
+                                 addons={addons}
+                                 plan={plan}
+                                 setCurrent={setCurrent}
+                                 type={type}
+                                />
+                                :current === 5 ?
+                                <FinalStep
+                                />
+                                :
+                                ''
             }
         </main>
     )
