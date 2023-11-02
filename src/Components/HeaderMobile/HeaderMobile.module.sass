@@ -1,0 +1,45 @@
+@import '../../assets/styles/variables'
+
+.container
+  width: 100vw
+  height: 25vh
+  background-image: url("../../assets/images/bg-sidebar-mobile.svg")
+  background-repeat: no-repeat
+  background-size: cover
+  color: $white
+  display: flex
+  justify-content: center
+
+  &__steps
+    width: 100%
+    display: flex
+    padding: 2rem 5rem 0 5rem
+
+    &_div
+      justify-content: center
+      display: flex
+      width: 100%
+
+      &_number
+        display: flex
+        align-items: center
+        justify-content: center
+        width: 35px
+        height: 35px
+        border-width: 1px
+        border-style: solid
+        border-color: $white
+        border-radius: 100%
+        font-family: $bold
+
+        &_description
+
+          &_step
+            font-family: $regular
+
+          &_name
+            font-family: $bold
+
+        &_current
+          background-color: $light-blue
+          color: $marine-blue
