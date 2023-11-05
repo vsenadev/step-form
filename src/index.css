@@ -11,7 +11,7 @@ body {
 
 @media (min-width: 470px) {
   body {
-    justify-content: center; /* Ou qualquer outro valor desejado para justify-content */
+    justify-content: center;
   }
 }
 
