@@ -22,7 +22,7 @@ export default function AppRouter() {
         <BrowserRouter>
             <Routes>
                 {
-                    windowWidth > 375 ?
+                    windowWidth > 475 ?
                         <Route path='/' element={<Home/>}/>
                     :
                         <Route path='/' element={<HomeMobile/>}/>
