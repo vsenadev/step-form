@@ -1,0 +1,134 @@
+@import "../../../assets/styles/variables"
+
+.container__mobile
+  position: fixed
+  background-color: $white
+  flex-direction: column
+  display: flex
+  padding-left: 7%
+  width: 85%
+  height: 55%
+  left: 5%
+  right: 5%
+  top: 100px
+  border-radius: 10px
+  gap: 2rem
+
+  &__box
+    display: flex
+    flex-direction: column
+    align-items: center
+    width: calc(85% - 2rem)
+    height: calc(70% - 6rem)
+    padding: 1rem 3rem 1rem 1rem
+    background-color: $alabaster
+    border-radius: 4px
+
+    hr
+      color: $alabaster
+      background-color: $alabaster
+      width: 100%
+      height: 0.1px
+      margin: 1rem 0
+
+    &_plan
+      display: flex
+      width: 100%
+      height: 4rem
+
+      &_desc
+        width: 100%
+        display: flex
+        flex-direction: column
+        gap: 10px
+
+        &_span
+          color: $marine-blue
+          font-weight: 700
+          font-family: $regular
+
+        &_change
+          text-decoration: underline
+          cursor: pointer
+          font-family: $regular
+          color: $cool-gray
+
+        &_change:hover
+          color: $purplish-blue
+
+      &_price
+        display: flex
+        align-items: center
+        height: 80%
+        width: 10%
+        font-weight: 800
+        color: $marine-blue
+        font-family: $medium
+
+    &_addons
+      width: 100%
+      height: 100%
+      display: flex
+      flex-direction: column
+      gap: 1rem
+
+      &_div
+        display: flex
+        width: 110%
+        justify-content: space-between
+
+        &_desc
+          font-family: $regular
+          color: $cool-gray
+
+        &_price
+          font-family: $medium
+
+  &__total
+    width:  calc(90% - 2rem)
+    padding: 0 1rem
+    height: 1rem
+    display: flex
+    align-items: center
+    justify-content: space-between
+    font-family: $regular
+
+    &_price
+      font-size: 1rem
+      color: $purplish-blue
+      font-weight: 700
+
+  &__buttons
+    width: 100%
+    height: 75%
+    display: flex
+    align-items: flex-end
+
+    &_div
+      display: flex
+      align-items: center
+      justify-content: space-between
+      width: 100%
+      padding: 0 1rem
+      height: 15%
+      background-color: $white
+
+      &_back
+        color: $marine-blue
+        font-family: $medium
+        cursor: pointer
+        font-size: 1rem
+
+      &_next
+        color: $white
+        border-style: none
+        border-radius: 8px
+        background-color: $purplish-blue
+        width: 35%
+        height: 2.5rem
+        font-size: 1rem
+        cursor: pointer
+        font-family: $medium
+
+      &_next:hover
+        background-color: hsla(243, 100%, 62%, 0.58)

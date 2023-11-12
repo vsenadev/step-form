@@ -12,14 +12,14 @@ export interface AddonsInterface {
     "yearly": number
 }
 
-interface ThirdStepInterface {
+export interface ThirdStepInterface {
     addons: AddonsInterface[]
     setAddons: React.Dispatch<React.SetStateAction<AddonsInterface[]>>
     setCurrent: React.Dispatch<React.SetStateAction<number>>
     type: boolean
 }
 
-export default function ThirdStep(props: ThirdStepInterface) {
+export default function ThirdStepMobile(props: ThirdStepInterface) {
 
 
     function generateAddonsList() {

@@ -1,11 +1,12 @@
 import {useState} from "react";
-import ThirdStep, {AddonsInterface} from "../Home/ThirdStep/ThirdStep";
+import {AddonsInterface} from "../Home/ThirdStep/ThirdStep";
 import HeaderMobile from "../../Components/HeaderMobile/HeaderMobile";
 import styles from "./HomeMobile.module.sass";
 import FirtsStep from "./FirstStepMobile/FirstStepMobile";
 import SecondStepMobile from "./SecondStepMobile/SecondStepMobile";
-// import FourthStep from "../Home/FourthStep/FourthStep";
-// import FinalStep from "../Home/FinalStep/FinalStep";
+import ThirdStepMobile from "./ThirdStepMobile/ThirdStepMobile";
+import FourthStepMobile from "../HomeMobile/FourthStepMobile/FourthStepMobile";
+import FinalStepMobile from "../HomeMobile/FinalStepMobile/FinalStepMobile";
 
 export default function HomeMobile(){
     const [current, setCurrent] = useState(1);
@@ -44,25 +45,25 @@ export default function HomeMobile(){
                             plan={plan}
                             setPlan={setPlan}
                         />
-                    //     :
-                    //     current === 3 ?
-                    //         <ThirdStep
-                    //             addons={addons}
-                    //             setAddons={setAddons}
-                    //             setCurrent={setCurrent}
-                    //             type={type}
-                    //         />
-                    //         :
-                    //         current === 4 ?
-                    //             <FourthStep
-                    //                 addons={addons}
-                    //                 plan={plan}
-                    //                 setCurrent={setCurrent}
-                    //                 type={type}
-                    //             />
-                    //             :current === 5 ?
-                    //                 <FinalStep
-                    //                 />
+                        :
+                        current === 3 ?
+                            <ThirdStepMobile
+                                addons={addons}
+                                setAddons={setAddons}
+                                setCurrent={setCurrent}
+                                type={type}
+                            />
+                            :
+                            current === 4 ?
+                                <FourthStepMobile
+                                    addons={addons}
+                                    plan={plan}
+                                    setCurrent={setCurrent}
+                                    type={type}
+                                />
+                                :current === 5 ?
+                                    <FinalStepMobile
+                                    />
                                     :
                                     ''
 

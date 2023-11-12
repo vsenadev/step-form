@@ -4,7 +4,7 @@ import React, {useEffect, useState} from "react";
 import {AddonsInterface} from "../ThirdStep/ThirdStep";
 import plans from "../../../data/plan.json"
 
-interface FourthStepInterface {
+export interface FourthStepInterface {
     plan: string
     addons: AddonsInterface[]
     setCurrent: React.Dispatch<React.SetStateAction<number>>
@@ -59,7 +59,7 @@ export default function FourthStep(props: FourthStepInterface){
                 <hr/>
                 <div className={styles.container__box_addons}>
                         {
-                            props.addons.map((element) => {
+                            props.addons.map((element: AddonsInterface) => {
                                 if(element.selected){
                                     return(
                                         <div key={element.name} className={styles.container__box_addons_div}>
